@@ -37,7 +37,11 @@ class Car implements CarInterface
     private $brand;
 
     /**
-     * @ORM\OneToMany(targetEntity="Picture", mappedBy="picture", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Picture", cascade={"persist"})
+     * @ORM\JoinTable(name="car__picture",
+     *      joinColumns={@ORM\JoinColumn(name="car_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="picture_id", referencedColumnName="id", unique=true)}
+     *      )
      **/
     private $pictures;
 

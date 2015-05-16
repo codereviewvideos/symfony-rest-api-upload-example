@@ -1,1 +1,9 @@
-Hello {{ name }}!
+<div>
+    You're viewing {{ car.name }} by {{ car.brand }}
+
+    {% for picture in car.pictures %}
+    <div>
+        <img src="data:image/jpg;base64,{{ picture.data }}" />
+    </div>
+    {% endfor %}
+</div>

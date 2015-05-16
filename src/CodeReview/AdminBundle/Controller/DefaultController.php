@@ -15,10 +15,8 @@ class DefaultController extends Controller
     {
         $car = $this->getDoctrine()->getRepository('CodeReviewRestBundle:Car')->find($id);
 
-        return new Response(sprintf('<html><body>%s - %s<br/><img src="data:image/jpg;base64,%s" /></body></html>',
-            $car->getBrand(),
-            $car->getName(),
-            $car->getPicture()
+        return $this->render('CodeReviewAdminBundle:Default:index.html.twig', array(
+            'car' => $car
         ));
     }
 }
