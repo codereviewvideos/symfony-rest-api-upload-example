@@ -1,0 +1,28 @@
+services:
+    code_review.rest_bundle.car_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - CodeReview\RestBundle\Entity\Car
+
+
+    code_review.rest_bundle.car_handler:
+        class: CodeReview\RestBundle\Handler\CarHandler
+        arguments:
+            - @code_review.rest_bundle.car_repository
+            - @code_review.rest_bundle.form.handler.car_form_handler
+
+
+    code_review.rest_bundle.form.type.car:
+        class: CodeReview\RestBundle\Form\Type\CarType
+        tags:
+            - { name: form.type, alias: car_form }
+
+
+    code_review.rest_bundle.form.handler.car_form_handler:
+        class: CodeReview\RestBundle\Form\Handler\FormHandler
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @form.factory
+            - @code_review.rest_bundle.form.type.car

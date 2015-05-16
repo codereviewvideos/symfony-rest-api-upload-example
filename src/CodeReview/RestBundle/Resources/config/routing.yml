@@ -1,0 +1,4 @@
+cars:
+    resource: CodeReview\RestBundle\Controller\CarController
+    type: rest
+

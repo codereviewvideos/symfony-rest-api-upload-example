@@ -1,0 +1,15 @@
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+
+
+admin:
+    resource: "@CodeReviewAdminBundle/Resources/config/routing.yml"
+    prefix: /
+
+
+rest_test_api:
+    type:     rest
+    resource: "@CodeReviewRestBundle/Resources/config/routing.yml"
+    prefix: /api

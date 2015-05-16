@@ -1,0 +1,4 @@
+code_review_admin_homepage:
+    resource: CodeReview\AdminBundle\Controller\DefaultController
+    type: annotation
+
