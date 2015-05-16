@@ -9,12 +9,12 @@ use CodeReview\RestBundle\Entity\Repository\CarRepository;
 class CarHandler implements HandlerInterface
 {
     private $repository;
-    private $formHander;
+    private $formHandler;
 
     public function __construct(CarRepository $artistRepository, FormHandler $formHandler)
     {
         $this->repository = $artistRepository;
-        $this->formHander = $formHandler;
+        $this->formHandler = $formHandler;
     }
 
     /**
@@ -40,7 +40,7 @@ class CarHandler implements HandlerInterface
      */
     public function post(array $parameters)
     {
-        return $this->formHander->processForm(
+        return $this->formHandler->processForm(
             new Car(),
             $parameters,
             "POST"

@@ -23,5 +23,5 @@ interface CarInterface
      *
      * @return string
      */
-    public function getPicture();
+    public function getPictures();
 }

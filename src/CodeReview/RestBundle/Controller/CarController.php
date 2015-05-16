@@ -74,6 +74,7 @@ class CarController extends FOSRestController
     public function postCarAction(Request $request)
     {
         try {
+            var_dump($request->request->all());
 
             $car = $this->getHandler()->post(
                 $request->request->all()

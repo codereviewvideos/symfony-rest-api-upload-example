@@ -3,6 +3,8 @@
 namespace CodeReview\RestBundle\Entity;
 
 use CodeReview\RestBundle\Model\CarInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -35,13 +37,15 @@ class Car implements CarInterface
     private $brand;
 
     /**
-     * A base64 representation of a car picture
-     *
-     * @var string
-     * @ORM\Column(name="picture", type="text")
-     */
-    private $picture;
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="picture", cascade={"persist"})
+     **/
+    private $pictures;
 
+
+    public function __construct()
+    {
+        $this->pictures = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -93,21 +97,23 @@ class Car implements CarInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getPicture()
+    public function addPicture(Picture $picture)
     {
-        return $this->picture;
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures->add($picture);
+        }
+
+        return $this;
     }
 
-    /**
-     * @param string $picture
-     * @return Car
-     */
-    public function setPicture($picture)
+    public function getPictures()
     {
-        $this->picture = $picture;
+        return $this->pictures;
+    }
+
+    public function setPictures(Collection $pictures)
+    {
+        $this->pictures = $pictures;
 
         return $this;
     }

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CarType extends AbstractType
+class PictureType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,27 +15,19 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array(
+            ->add('data', 'text', array(
                 'required' => true,
-            ))
-            ->add('brand', 'text', array(
-                'required' => true,
-            ))
-            ->add('pictures', 'collection', array(
-                'type' => new PictureType(),
-                'allow_add' => true,
-                'by_reference' => false,
             ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CodeReview\RestBundle\Entity\Car'
+            'data_class' => 'CodeReview\RestBundle\Entity\Picture'
         ));
     }
 
@@ -44,6 +36,6 @@ class CarType extends AbstractType
      */
     public function getName()
     {
-        return 'codereview_restbundle_car';
+        return 'codereview_restbundle_picture';
     }
 }
