@@ -2,6 +2,7 @@
 
 namespace CodeReview\RestBundle\Form\Handler;
 
+use CodeReview\RestBundle\Entity\Car;
 use CodeReview\RestBundle\Exception\InvalidFormException;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactoryInterface;

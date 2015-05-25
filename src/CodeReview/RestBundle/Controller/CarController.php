@@ -75,9 +75,12 @@ class CarController extends FOSRestController
     {
         try {
 
-            $car = $this->getHandler()->post(
-                $request->request->all()
+            $parameters = array_replace_recursive(
+                $request->request->all(),
+                $request->files->all()
             );
+
+            $car = $this->getHandler()->post($parameters);
 
             $routeOptions = array(
                 'id'        => $car->getId(),
